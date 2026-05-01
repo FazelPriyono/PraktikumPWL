@@ -44,7 +44,7 @@ class PostForm
                                 Select::make('category_id')
                                     ->label('Category')
                                     ->relationship('category', 'name')
-                                    ->preload()
+                                    //->preload()
                                     ->required()
                                     ->searchable(),
                                 ColorPicker::make('color'),
@@ -71,8 +71,11 @@ class PostForm
                     Section::make('Meta Settings')
                         ->icon('heroicon-o-information-circle') 
                         ->schema([
-                            TagsInput::make('tags'),
-                            
+                            //TagsInput::make('tags'),
+                            Select::make('tags')
+                                ->relationship('tags', 'name')
+                                ->multiple()
+                                ->preload(),
                             Checkbox::make('published')
                                 ->label('Publish to Public'),
                             DateTimePicker::make('published_at')
